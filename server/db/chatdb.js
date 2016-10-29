@@ -12,6 +12,7 @@ db.once('open', function(){
 var ChatsSchema = new mongoose.Schema({
   name: String,
   message: String,
+  uuid: String
 }, {collection: 'ChatsCollection'});
 
 module.exports = mongoose.model('Chats', ChatsSchema)

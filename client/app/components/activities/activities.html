@@ -64,9 +64,19 @@
     </table>
   </div>
   </div>
-</uib-tab> 
+</uib-tab>
 
 <uib-tab index="3" heading="Chats">
+  <div ng-controller="ChatsController" class="chatsContainer" ng-init='getMessages()'>
+    <div class="socket">
+    </div>
+    <ul id="messages" ng-repeat='chat in messages track by $index'>
+      <li>{{chat.name}}: {{chat.message}}</li>
+    </ul>
+    <form action="">
+      <input id="m" ng-model='value' autocomplete="off" /><button type='submit' ng-click='sendMessage()'>Send</button>
+    </form>
+  </div>
 </uib-tab>
 
 <hr />

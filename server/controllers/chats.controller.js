@@ -4,8 +4,9 @@ var Chats = require('../db/chatdb.js')
 var chatsController = {}
 
 chatsController.GET = function(req, res) {
-  console.log('wer are in chatsctrl server');
-  Chats.find({})
+  Chats.find({
+    uuid: req.query.uuid
+})
   .then(function(result){
     console.log('.then results', result);
     res.status(200).json(result)

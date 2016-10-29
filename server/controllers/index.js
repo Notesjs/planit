@@ -3,6 +3,6 @@ module.exports = {
   activityController: require('./activity.controller'),
   searchController: require('./search.controller'),
   authController: require('./auth.controller'),
-  flightController: require('./flight.controller')
+  flightController: require('./flight.controller'),
   chatsController: require('./chats.controller')
 };

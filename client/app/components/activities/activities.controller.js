@@ -34,7 +34,7 @@
     });
 
     function getActivities(uuid) {
-      console.log('getActivities', uuid)
+      // console.log('getActivities', uuid)
       return activityService.getActivities(uuid)
         .then(function(data) {
           // format the address of each location for display

@@ -41,7 +41,7 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
   socket.on('chat message', function(msg){
-    chatdb.create({name: msg.name, message: msg.message})
+    chatdb.create({name: msg.name, message: msg.message, uuid: msg.uuid})
     io.emit('chat message server', msg)
     console.log('chat message', msg);
   })

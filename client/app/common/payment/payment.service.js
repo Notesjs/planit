@@ -16,6 +16,10 @@
     return service;
 
     function paymentInit() {
+      $( "#dialog-message" ).dialog({
+      modal: true,
+      autoOpen: false
+    });
     var form = document.querySelector('#cardForm');
     $http({
       method: 'GET',
@@ -73,7 +77,7 @@
       }, function (err, hostedFieldsInstance) {
         form.addEventListener('submit', function (event) {
         event.preventDefault();
-        var amount = prompt("Please enter your amount", "10.00");
+        var amount = document.getElementById('amount').value;
 
         hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
           if (tokenizeErr) {
@@ -87,8 +91,8 @@
           .then(function (response) {
             $location.path('/explore')
             $timeout(function(){
-              alert("Thank you for the $" + amount + " donation!");
-            }, 1000)
+              $( "#dialog-message" ).dialog( "open" )
+            }, 500)
           })
           .catch(function (error) {
             console.log(error);

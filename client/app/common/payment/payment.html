@@ -1,4 +1,10 @@
 <div class="payment-frame" ng-init="vm.paymentInit()" ng-controller="PaymentController">
+  <div id="dialog-message" title="Donation Complete!">
+  <p>
+    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+    Thank you for your donation! The planit development team appreciates your support!
+  </p>
+</div>
   <h1 align="center" style="text-shadow: 2px 2px 5px gray;">We appreciate your donation! Your donation will help the development of Planit!</h1>
   <form action="/api/payment/form" method="post" id="cardForm" >
 

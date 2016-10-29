@@ -16,6 +16,10 @@
     return service;
 
     function paymentInit() {
+      $( "#dialog-message" ).dialog({
+      modal: true,
+      autoOpen: false
+    });
     var form = document.querySelector('#cardForm');
     $http({
       method: 'GET',
@@ -87,8 +91,8 @@
           .then(function (response) {
             $location.path('/explore')
             $timeout(function(){
-              alert("Thank you for the $" + amount + " donation!");
-            }, 1000)
+              $( "#dialog-message" ).dialog( "open" )
+            }, 500)
           })
           .catch(function (error) {
             console.log(error);

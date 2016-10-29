@@ -13,11 +13,16 @@
 
       return service;
 
-      function getFromDb(){
-        console.log('inside getfromdb');
-        return $http.get('/api/chats')
+      function getFromDb(uuid){
+        return $http({
+          method: 'GET',
+          url: '/api/chats',
+          params: {
+            uuid:uuid
+          }
+        })
         .then(function(messages){
-          console.log('inside .then client', messages.data);
+          console.log("messages____!!!!", messages);
           return messages.data
         })
         .catch(function(err){

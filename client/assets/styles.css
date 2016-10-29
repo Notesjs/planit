@@ -142,7 +142,7 @@ form.tab-form-demo .tab-pane {
     margin-left: 15px; }
 
 /*socket io styling*/
-* { margin: 0;
+/** { margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -157,6 +157,7 @@ form {
   bottom: 0;
   width: 100%;
 }
+*/
 form input {
   border: 0;
   padding: 10px;
@@ -164,7 +165,8 @@ form input {
   margin-right: .5%;
  }
 form button { width: 9%;
-  background: rgb(130, 224, 255); border: none;
+  background: #82E0FF;
+  border: none;
   padding: 10px;
 }
 #messages {

@@ -73,7 +73,7 @@
       }, function (err, hostedFieldsInstance) {
         form.addEventListener('submit', function (event) {
         event.preventDefault();
-        var amount = prompt("Please enter your amount", "10.00");
+        var amount = document.getElementById('amount').value;
 
         hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
           if (tokenizeErr) {

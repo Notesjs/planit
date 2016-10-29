@@ -1,6 +1,10 @@
 <div class="payment-frame" ng-init="vm.paymentInit()" ng-controller="PaymentController">
   <h1 align="center" style="text-shadow: 2px 2px 5px gray;">We appreciate your donation! Your donation will help the development of Planit!</h1>
-  <form action="/checkout" method="post" id="cardForm" >
+  <form action="/api/payment/form" method="post" id="cardForm" >
+
+    <label class="hosted-fields--label" for="card-number">AMOUNT TO DONATE</label>
+    <input class="hosted-field" type="text" name="donation" value="10.00" id="amount">
+
     <label class="hosted-fields--label" for="card-number">Card Number</label>
     <div id="card-number" class="hosted-field"></div>
 

@@ -5,9 +5,9 @@
     .module('app.activityList', ['ngMaterial', 'angular-jwt'])
     .controller('ActivityController', ActivityController);
 
-  ActivityController.$inject = ['$scope', '$state', 'activityService', '$mdDialog', '$http', '$window', 'jwtHelper','$location'];
+  ActivityController.$inject = ['$scope', '$state', 'activityService', '$mdDialog', '$http', '$window', 'jwtHelper','$location', '$mdToast'];
 
-  function ActivityController($scope, $state, activityService, $mdDialog, $http, $window, jwtHelper, $location) {
+  function ActivityController($scope, $state, activityService, $mdDialog, $http, $window, jwtHelper, $location, $mdToast) {
     var vm = this;
     const id = $location.search()
     vm.possibleActivities = [];
@@ -25,6 +25,12 @@
     * It also sets selectedActivity and selectedExpediaActivity of the ParentController on user-click
     * in getSelectedActivity().
     * */
+
+
+    $scope.showToast = function() {
+      $mdToast.show($mdToast.simple().position('top right').textContent('Successfully signed in!').hideDelay(3000).parent(document.getElementById('toast-container')));
+    }
+
 
     $scope.$on('uuidChange', function(event, args) {
       console.log('args', args)
@@ -69,6 +75,8 @@
           $window.localStorage.token = res.data.token;
           $window.localStorage.id = res.data.id;
           $window.localStorage.name = res.data.name;
+          $mdDialog.hide()
+          $scope.showToast()
         })
     }
 
@@ -82,8 +90,22 @@
           $window.localStorage.token = res.data.token;
           $window.localStorage.id = res.data.id;
           $window.localStorage.name = res.data.name;
+          $mdDialog.hide()
+          $scope.showToast()
         })
     }
+
+    $scope.showSimpleToast = function() {
+      var pinTo = $scope.getToastPosition();
+
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent('Simple Toast!')
+          .position(pinTo )
+          .hideDelay(3000)
+      );
+    };
+
 
     $scope.showTabDialog = function() {
       $mdDialog.show({
@@ -108,9 +130,8 @@
         try {
           var token = $window.localStorage.token;
           var decoded = jwtHelper.decodeToken(token);
-          console.log("DECODED", decoded)
           var expired = jwtHelper.isTokenExpired(token);
-          console.log("EXPIRED", expired)
+          console.log($window.localStorage.name + ' is signed in. Token expired: ' + expired + '. Here\'s yo token: ' + token)
         } catch(err) {
           console.log('err', err)
         }

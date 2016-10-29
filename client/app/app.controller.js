@@ -10,7 +10,7 @@
   function ParentController($scope, $state, $location) {
     const id = $location.search();
     var parent = this;
-    $scope.uuid = id.uuid;
+    $scope.uuid = '';
     $scope.selectedActivity = '';
     $scope.selectedExpediaActivity = '';
 

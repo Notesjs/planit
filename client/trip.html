@@ -1,8 +1,28 @@
-<div ng-model='ParentController' class="container">
+<div ng-controller='FlightController' class="container">
   <h1>Your Trip</h1>
 
   <h4>Check for Flights<h4>
-  <div ng-controller="ParentController" ng-cloak>
+  <div>
+   <md-input-container class="md-block" flex-gt-sm>
+      <label>Departure City</label>
+      <md-select ng-model="departureCity">
+        <md-option ng-repeat="city in cities" value="{{city.abbrev}}">
+          {{city.abbrev}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Arrival City</label>
+        <md-select ng-model="arrivalCity">
+          <md-option ng-repeat="city in cities" value="{{city.abbrev}}">
+            {{city.abbrev}}
+          </md-option>
+        </md-select>
+    </md-input-container>
+  </div>
+
+
   <div class="tableFoundation">
       <div layout-gt-xs="row">
         <div flex-gt-xs>
@@ -14,10 +34,10 @@
           <h4>Departure</h4>
           <md-datepicker ng-model="departureDate" md-placeholder="Departure date"></md-datepicker>
         </div>  
-        <md-button class="md-raised">Check</md-button>
+        <md-button ng-click="getFlight(arrivalCity,departureCity,arrivalDate,departureDate)" class="md-raised">Check</md-button>
     </div>
   </div>
-  </div>
+ 
 
   <div ui-view="auth"></div>
   <div class="col-md-6" ui-view="activity"></div>

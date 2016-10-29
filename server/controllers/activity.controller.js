@@ -76,7 +76,7 @@ activityController.POSTEXPEDIA = function(req, res) {
       });
 
       // Limit expedia results to 20.
-      PossibleExpedia.bulkCreate(body.activities.slice(0, 50));
+      PossibleExpedia.bulkCreate(body.activities.slice(0, 20));
     });
 };
 

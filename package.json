@@ -33,7 +33,7 @@
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
     "randomstring": "^1.1.5",
-    "request": "^2.75.0",
+    "request": "^2.76.0",
     "request-promise": "^4.1.1",
     "sequelize": "^3.24.3",
     "socket.io": "^1.5.1",

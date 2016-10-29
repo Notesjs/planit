@@ -5,17 +5,18 @@
     .module('app.activityList', ['ngMaterial', 'angular-jwt'])
     .controller('ActivityController', ActivityController);
 
-  ActivityController.$inject = ['$scope', '$state', 'activityService', '$mdDialog', '$http', '$window', 'jwtHelper'];
+  ActivityController.$inject = ['$scope', '$state', 'activityService', '$mdDialog', '$http', '$window', 'jwtHelper','$location'];
 
-  function ActivityController($scope, $state, activityService, $mdDialog, $http, $window, jwtHelper) {
+  function ActivityController($scope, $state, activityService, $mdDialog, $http, $window, jwtHelper, $location) {
     var vm = this;
+    const id = $location.search()
     vm.possibleActivities = [];
     vm.possibleExpedia = [];
     vm.getActivities = getActivities;
     vm.getSelectedActivity = getSelectedActivity;
     vm.getExpedia = getExpedia;
     vm.getSelectedExpediaActivity = getSelectedExpediaActivity;
-    vm.uuid;
+    vm.uuid = id.uuid
 
     /* *
     * ActivityController listens for a change in ParentController's uuid value
@@ -26,12 +27,14 @@
     * */
 
     $scope.$on('uuidChange', function(event, args) {
+      console.log('args', args)
       vm.uuid = args.val;
       vm.getActivities(args.val);
       vm.getExpedia(args.val);
     });
 
     function getActivities(uuid) {
+      console.log('getActivities', uuid)
       return activityService.getActivities(uuid)
         .then(function(data) {
           // format the address of each location for display

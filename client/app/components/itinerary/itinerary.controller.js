@@ -5,17 +5,19 @@
     .module('app.itinerary')
     .controller('ItineraryController', ItineraryController);
 
-  ItineraryController.$inject = ['$scope', '$state', 'itineraryService'];
+  ItineraryController.$inject = ['$scope', '$state', 'itineraryService','$location'];
 
-  function ItineraryController($scope, $state, itineraryService) {
+  function ItineraryController($scope, $state, itineraryService, $location) {
     var vm = this;
+    const id = $location.search()
+    console.log('id',id)
     vm.savedActivities = [];
     vm.savedExpediaActivities = [];
     vm.getSavedActivities = getSavedActivities;
     vm.postSavedActivity = postSavedActivity;
     vm.getSavedExpediaActivities = getSavedExpediaActivities;
     vm.postSavedExpediaActivity = postSavedExpediaActivity;
-    vm.uuid;
+    vm.uuid = id.uuid
 
     /* *
     * ItineraryController
@@ -25,17 +27,17 @@
     * */
 
     $scope.$on('uuidChange', function(event, args) {
-      vm.uuid = args.val;
-      vm.getSavedActivities(args.val);
+      // vm.uuid = vm.uuid;
+      vm.getSavedActivities(vm.uuid);
     });
-
+//
     $scope.$on('selectedActivityChange', function(event, args) {
-      vm.postSavedActivity(args.val);
+      vm.postSavedActivity(vm.uuid);
       vm.getSavedActivities(vm.uuid);
     });
 
     $scope.$on('selectedExpediaActivityChange', function(event, args) {
-      vm.postSavedExpediaActivity(args.val);
+      vm.postSavedExpediaActivity(vm.uuid);
       vm.getSavedExpediaActivities(vm.uuid);
     });
 

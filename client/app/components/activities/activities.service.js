@@ -18,6 +18,7 @@
       ///////////////
 
       function getActivities(uuid) {
+        console.log("uuid", uuid)
         return $http({
           method: 'GET',
           url: '/api/activity',

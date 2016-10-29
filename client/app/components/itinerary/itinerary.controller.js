@@ -27,18 +27,18 @@
     * */
 
     $scope.$on('uuidChange', function(event, args) {
-      // vm.uuid = vm.uuid;
-      vm.getSavedActivities(vm.uuid);
+      vm.uuid = args.val
+      vm.getSavedActivities(args.val);
     });
 //
     $scope.$on('selectedActivityChange', function(event, args) {
-      vm.postSavedActivity(vm.uuid);
-      vm.getSavedActivities(vm.uuid);
+      vm.postSavedActivity(args.val);
+      vm.getSavedActivities(args.val);
     });
 
     $scope.$on('selectedExpediaActivityChange', function(event, args) {
-      vm.postSavedExpediaActivity(vm.uuid);
-      vm.getSavedExpediaActivities(vm.uuid);
+      vm.postSavedExpediaActivity(args.val);
+      vm.getSavedExpediaActivities(args.val);
     });
 
     function getSavedActivities(uuid) {

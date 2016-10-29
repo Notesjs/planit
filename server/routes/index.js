@@ -6,7 +6,7 @@ var searchRouter = require('./search.router');
 var authRouter = require('./auth.router');
 var paymentRouter = require('./payment.router')
 var flightRouter = require('./flight.router');
-
+var chatsRouter = require('./chats.router')
 var router = express.Router();
 
 router.use('/itinerary', itineraryRouter);
@@ -15,5 +15,6 @@ router.use('/search', searchRouter);
 router.use('/auth', authRouter);
 router.use('/payment', paymentRouter)
 router.use('/flight', flightRouter);
+router.use('/chats', chatsRouter)
 
 module.exports = router;

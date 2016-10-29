@@ -4,4 +4,5 @@ module.exports = {
   searchController: require('./search.controller'),
   authController: require('./auth.controller'),
   flightController: require('./flight.controller')
+  chatsController: require('./chats.controller')
 };
